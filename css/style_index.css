@@ -37,7 +37,8 @@ section {
     border-radius: 50px;
     height: 269px;
     width: 357px;
-    zoom: 1.1; 
+    zoom: 1.1;
+    text-decoration: none;
 }
 .card-home-content {
     display: flex;
