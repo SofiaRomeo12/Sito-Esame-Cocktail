@@ -324,6 +324,14 @@ l'esplicito consenso scritto dell'autore.</p>
         <script>
             document.getElementById('ricerca').addEventListener('input', filtra);
 
+            // al click di un filtro (bicchiere o categoria) filtra
+            document.querySelectorAll('.lista-bicchieri button, .lista-categorie button').forEach(btn => {
+                btn.addEventListener('click', () => { 
+                    btn.classList.toggle('active');
+                    filtra(); 
+                });
+            });
+
             //filtri bicchieri e categorie
             function filtra() {
                 const bicchieri = [...document.querySelectorAll('.lista-bicchieri button.active')].map(b => b.textContent.trim());
@@ -341,13 +349,6 @@ l'esplicito consenso scritto dell'autore.</p>
                 });
             }
 
-            // al click di un filtro (bicchiere o categoria) filtra
-            document.querySelectorAll('.lista-bicchieri button, .lista-categorie button').forEach(btn => {
-                btn.addEventListener('click', () => { 
-                    btn.classList.toggle('active');
-                    filtra(); 
-                });
-            });
         </script>
     </body>
 </html>
