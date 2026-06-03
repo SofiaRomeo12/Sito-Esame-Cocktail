@@ -29,15 +29,15 @@ section {
     gap: 5vw;
 }
 .card-home {
-    display: none;
+    display: none; /* tutte le card sono nascoste, solo quella attiva viene mostrata */
     overflow: hidden; /* taglia il bicchiere dentro la card */
     position: relative;
-    padding: 4em 3em 0 2.5em;
+    padding: 64px 48px 0 40px;
     border: 1.5px solid #000;
     border-radius: 50px;
     height: 269px;
     width: 357px;
-    zoom: 1.1;
+    zoom: 1.1; 
 }
 .card-home-content {
     display: flex;
@@ -53,7 +53,7 @@ section {
     position: absolute;
 }
 .card-home p {
-    line-height: 1.6rem;
+    line-height: 160%;
     white-space: pre;
 }
 
@@ -101,7 +101,6 @@ section {
 /*Animazione cards cocktails*/
 
 
-
 .container-riga-immagini {
     margin-left: -10vw;
     margin-right: -10vw;
@@ -115,8 +114,6 @@ section {
     object-fit: cover;
     height: inherit;
 }
-
-
 
 .container-cards-pagine {
     margin-bottom: 200px;

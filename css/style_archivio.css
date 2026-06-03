@@ -41,7 +41,7 @@
     display: flex;
     justify-content: center;
     gap: 4vw;
-    margin-bottom: 370px; /*350px è la lunghezza massima della lista, 20px in più li ho inseriti per avere più margine*/
+    margin-bottom: 370px; /*350px è la lunghezza massima della lista, 20px in più sono per avere più margine*/
 }
 .filtro-categoria-container, .filtro-bicchieri-container {
     position: relative;
@@ -67,7 +67,7 @@
     width: 0;
     height: 2px;
     background: #FC6E03;
-    transition: width 0.3s ease;
+    transition: width 0.3s ease; 
 }
 
 /*mantiene la linea del bottone attiva quando il mouse è dentro le liste delle categorie e dei bicchieri*/
@@ -81,7 +81,7 @@
     background: #fff;
     border: none;
     opacity: 0;
-    pointer-events: none;
+    pointer-events: none; /* disabilita l'interazione con la lista quando è nascosta */
     transition: opacity 0.3s ease-in-out;
     width: 200px;
     font-family: "Inter", sans-serif;
@@ -93,7 +93,7 @@
 .filtro-categoria-container:hover .lista-categorie,
 .filtro-bicchieri-container:hover .lista-bicchieri {
     opacity: 1;
-    pointer-events: auto;
+    pointer-events: auto; /* abilita l'interazione con la lista quando è visibile */
 }
 .lista-categorie > li > button, .lista-bicchieri > li > button {
     background: none;
@@ -175,7 +175,7 @@
         padding: 3px 8px; 
     }
     .set {
-        transform: none;
+        transform: none; /* rimuove lo spostamento a destra dei cocktail per i tablet */
     }
 }
 
