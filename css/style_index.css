@@ -175,16 +175,18 @@ section {
         align-items: center; 
         gap: 30px;
     }
-    .container-riga-immagini {     
-        margin-left: -10vw;
-        margin-right: -10vw;
-    }
-
     .header-hero {
         margin-top: 3vw;
     }
     .card-home p{
         font-size: 16.5px;
+    }
+}
+
+@media (min-width: 370px) and (max-width: 490px) {
+    .container-riga-immagini {     
+        margin-left: -5vw;
+        margin-right: -5vw;
     }
 }
 
