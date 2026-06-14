@@ -118,6 +118,10 @@ nav{
     font-weight: 400;
     position: relative;
 }
+.risorse > a:hover::after,
+.risorse > a.attiva::after {
+    width: 100%;
+}
 .risorse > a::after { /*animazione risorse navbar*/
     content: '';
     position: absolute;
@@ -134,25 +138,29 @@ nav{
 
 .header-hero > img {
     width: 100%;
-    height: auto;
+    height: clamp(200px, 50vw, 500px);
+    object-fit: contain;
+}
+.header-hero-unset > img {
+    height: unset; /*messo qui e non dopo ".header-hero > img" perché il codice deve sovrascriverlo e per farlo va messo dopo perché il codice viene letto dall'alto verso il basso*/
 }
 .listaiba-bg {
     background-image: url(../img/sectionherolistaiba.webp);
-    height: clamp(300px, 60vw, 800px);
+    height: clamp(300px, 60vw, 500px);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
 .bicchieri-bg{
     background-image: url(../img/sectionherobicchieri.webp);
-    height: clamp(300px, 60vw, 800px);
+    height: clamp(300px, 60vw, 500px);
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: bottom;
     background-size: cover;
 }
 .archivio-bg{
     background-image: url(../img/archivio-bg.webp);
-    height: clamp(300px, 60vw, 800px);
+    height: clamp(300px, 60vw, 500px);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -355,7 +363,9 @@ nav{
 .background-bluelagoon3{
     background-image: url(../img/bluelagon3.webp);
 }
-
+.background-camelmilk3{
+    background-image: url(../img/camelmilk3.webp);
+}
 .section-3-content{
     width: 50%;
     border-radius: 50px 50px 0 0;
@@ -856,7 +866,7 @@ nav{
 @media (min-width: 370px) and (max-width: 768px) {
     /*generico*/
     h1, h2{
-        font-size: 25px;
+        font-size: 27px;
         margin-bottom: 12px;
     }
     h3 { font-size: 16px; }
@@ -942,9 +952,35 @@ nav{
 
     /*footer*/
     .footer-line-left, .footer-line-right { display: none; }
+
+    .footer-content{
+        flex-direction: column;
+        gap: 15px;
+        padding: 40px 20px 30px 20px;
+    }
     .footer-socials-icons > a {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
+    }
+    .footer-socials{ order: 1; }
+    .footer-socials > img {
+        width: clamp(150px, 25vw, 300px);
+        margin: 0;
+    }
+    .footer-contacts{
+        order: 2;
+        text-align: center;
+    }
+    .footer-contacts > .footer-contacts-title {
+        font-size: clamp(12px, 2vw, 15px);
+    }
+    .footer-contacts > P {
+        font-size: clamp(10px, 1.5vw, 13px);
+    }
+    .footer-copyright { order: 3; }
+    .footer-copyright > p { 
+        text-align: center; 
+        font-size: clamp(8px, 1.1vw, 10px);
     }
 }
 
@@ -1229,7 +1265,7 @@ nav{
         margin-top: 50px;
         margin-bottom: 20px;
         justify-content: center;
-        width: clamp(100px, 66vw, 390px);
+        width: clamp(200px, 80vw, 600px);
     }
 
     .section-1-desc-listaiba p {
@@ -1262,7 +1298,7 @@ nav{
     .section-3-listaiba {
         margin-bottom: 50px;
         justify-content: center;
-        width: clamp(100px, 66vw, 390px);
+        width: clamp(200px, 80vw, 600px);
     }
 
     .section-3-desc-listaiba p,
@@ -1275,7 +1311,7 @@ nav{
     .section-4-listaiba {
         margin-bottom: 50px;
         justify-content: center;
-        width: clamp(100px, 66vw, 390px);
+        width: clamp(200px, 80vw, 600px);
     }
 
     .section-4-title {
@@ -1319,12 +1355,12 @@ nav{
     .section-5-container {
         height: 370px;
         border-radius: 50px;
-        width: clamp(100px, 80vw, 600px);
+        width: clamp(200px, 80vw, 600px);
     }
 
     .section-5-content {
         width: 100%;
-        max-width: clamp(100px, 74vw, 600px);
+        max-width: clamp(200px, 80vw, 600px);
         border-radius: 50px 50px 0 0;
         padding: 25px 25px 0px 25px;
     }
@@ -1343,7 +1379,7 @@ nav{
         margin: 50px 0 120px 0;
         gap: 30px;
         justify-content: center;
-        width: clamp(100px, 66vw, 390px);
+        width: clamp(200px, 80vw, 600px);
     }
 
     .section-6-desc-listaiba {

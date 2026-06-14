@@ -2,16 +2,7 @@ section {
     margin-bottom: clamp(50px, 20vw, 130px);
 }
 
-.header-hero > img {
-    margin-top: 15vw;
-}
-
 .titoli {
-    position: absolute;
-    top: -33%;
-    left: 0;
-    right: 0;
-    bottom: 50%;
     height: fit-content;
     flex-direction: column;
 }
@@ -28,22 +19,30 @@ section {
 .container-cards-cocktails {
     gap: 5vw;
 }
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5vw 8vw;
+}
 .card-home {
-    display: none; /* tutte le card sono nascoste, solo quella attiva viene mostrata */
-    overflow: hidden; /* taglia il bicchiere dentro la card */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
     position: relative;
-    padding: 64px 48px 0 40px;
+    padding: 56px 48px 47px 40px;
     border: 1.5px solid #000;
     border-radius: 50px;
-    height: 269px;
-    width: 357px;
+    width: 420px;
+    height: 100px;
     zoom: 1.1;
     text-decoration: none;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* aggiunge una transizione per l'effetto hover */
 }
 .card-home-content {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 16px;
 }
 .card-home-content > h2 {
     font-size: 30px;
@@ -57,49 +56,10 @@ section {
     line-height: 160%;
     white-space: pre;
 }
-
-.card-home.active {
-  display: block;
+.card-home:hover {
+  transform: scale(1.02); /* si ingrandisce da tutti i lati */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; /* ombra */
 }
-
-.dots {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 20px;
-}
-.dot {
-    background: #9B9B9B;
-    transform: unset;
-    cursor: pointer;
-}
-.dot.active {
-  background: #000;
-  animation: popDot 0.4s ease;
-}
-
-/*Animazione cards cocktails*/
-@keyframes contentIn {
-  from {
-    opacity: 0;
-    transform: translateX(-12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-.card-home.active .card-home-content {
-  animation: contentIn 0.35s ease;
-}
-.card-home.active img {
-  animation: contentIn 0.4s ease;
-}
-/*Animazione cards cocktails*/
 
 
 .container-riga-immagini {
@@ -117,11 +77,8 @@ section {
 }
 
 .container-cards-pagine {
-    margin-bottom: 200px;
+    margin-bottom: 160px;
     gap: 5vw;
-}
-.card-slider {
-    position: relative;
 }
 .card-home-2 {
     position: relative;
@@ -129,10 +86,12 @@ section {
     overflow: hidden; /* taglia img e label agli angoli così non fuoriescono */
     border: 1px solid #000;
     border-radius: 50px;
-    transition: transform 0.30s ease;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .card-home-2:hover{
-    transform: translateY(-10px);
+    transform: scale(1.02); /* si ingrandisce da tutti i lati */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; /* ombra */
 }
 .card-home-2 img {
     width: 100%;
@@ -168,7 +127,7 @@ section {
     .titoli > h1 { font-size: 4.2vw; }
     .titoli > p  { font-size: 1.6vw; }
 
-    .card-home { zoom: 1; }
+    .card-home { zoom: 0.9; }
     .dot { width: 9px; height: 9px; }
 
     .container-cards-cocktails,
@@ -178,12 +137,13 @@ section {
 /* Tablet */
 @media (min-width: 768px) and (max-width: 1194px) {
     .titoli > h1 { 
-        font-size: 5vw; 
+        font-size: 5vw;
         letter-spacing: 0.8vw; 
     }
     .titoli > p  { font-size: 2vw; }
 
-    .card-home { zoom: 0.8; }
+    .card-grid { grid-gap: 3vw 5vw; }
+    .card-home { zoom: 0.65; }
     .dot { width: 8px; height: 8px; }
 
     .container-cards-cocktails,
@@ -192,16 +152,20 @@ section {
         margin-left: -5vw;
         margin-right: -5vw; 
     }
+    .card-home p {
+        font-size: 16.5px;
+    }
 }
 
 /* Telefono */
 @media (min-width: 370px) and (max-width: 768px) {
     .titoli > h1 { 
-        font-size: 6vw; 
+        font-size: 6.5vw;
         letter-spacing: 0.8vw; 
     }
     .titoli > p  { font-size: 2.5vw; }
 
+    .card-grid { grid-template-columns: 1fr; }
     .card-home { zoom: 0.7; }
     .dot { width: 7px; height: 7px; }
 
@@ -212,8 +176,15 @@ section {
         gap: 30px;
     }
     .container-riga-immagini {     
-        margin-left: -10vw;
-        margin-right: -10vw;
+        margin-left: -5vw;
+        margin-right: -5vw;
+    }
+
+    .header-hero {
+        margin-top: 3vw;
+    }
+    .card-home p{
+        font-size: 16.5px;
     }
 }
 
@@ -228,6 +199,7 @@ section {
         top: -40%;
     }
 
+    .card-grid { grid-template-columns: 1fr; }
     .card-home { zoom: 0.6; }
     .dot { width: 6px; height: 6px; }
 
@@ -242,7 +214,10 @@ section {
         margin-right: -5vw;
     }
 
-    .header-hero > img {
-        margin-top: 20vw;
+    .header-hero {
+        margin-top: 3vw;
+    }
+    .card-home p{
+        font-size: 15px;
     }
 }

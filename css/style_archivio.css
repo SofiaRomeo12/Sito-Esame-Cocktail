@@ -1,127 +1,77 @@
-/*INIZIO ARCHIVIO HEADER*/
-.barra-ricerca-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 80px 0 30px 0;
-}
-.barra-ricerca{
-    display: flex;
-    width: 50vw;
-    min-width: 350px;
-    max-width: 1000px;
-    height: 50px;
-    border-radius: 150px;
-    border: none;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-    text-align: left;
-    font-size: clamp(21px, 2vw, 30px);
-    outline: none;
-    background-color: #ffffff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.barra-ricerca:hover {
-  transform: scale(1.05); /* dimensione */
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15); /* ombra */
-}
-.barra-ricerca > svg {
-    width: 25px;
-    margin-left: 10px;
-}
-.barra-ricerca-input {
-    outline: none;
-    border: none;
-    width: 100%;
-    border-radius: 150px;
+h3 {
     font-family: 'Inter';
-    font-size: 20px;
+    font-size: clamp(18px, 3.5vw, 20px);
+    font-weight: 500;
+    color: #000;
+    margin-bottom: clamp(17px, 1.5vw, 25px);
 }
 
 .filtri-container {
     display: flex;
-    justify-content: center;
-    gap: 4vw;
-    margin-bottom: 370px; /*350px è la lunghezza massima della lista, 20px in più sono per avere più margine*/
+    justify-content: flex-start;
+    gap: 10vw;
+    margin-top: 5vw;
 }
-.filtro-categoria-container, .filtro-bicchieri-container {
-    position: relative;
+.filtri {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(12px, 1vw, 20px);
 }
-.filtro-categoria-container > button, .filtro-bicchieri-container > button {
+.filtri > button, .filtri > button {
     font-family: 'Inter';
-    font-size: clamp(15px, 3.5vw, 20px);
-    background-color: transparent;
-    padding: 10px;
+    font-size: clamp(10px, 3.5vw, 13px);
+    font-weight: 500;
+    background-color: #fff;
     border: none;
-    position: relative;
-    color: #777777; /* colore base testo del bottone */
-    min-height: 44px;
-}
-.filtro-categoria-container > ul > li > button:hover, .filtro-bicchieri-container > ul > li > button:hover {
-    color: #b4b4b4; /* colore base testo di ogni elemento della lista quando passi su col mouse */
-}
-.filtro-categoria-container > button::after, .filtro-bicchieri-container > button::after { /*animazione risorse navbar (linea arancione bottone)*/
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #FC6E03;
-    transition: width 0.3s ease; 
-}
-
-/*mantiene la linea del bottone attiva quando il mouse è dentro le liste delle categorie e dei bicchieri*/
-.filtro-categoria-container:hover > button::after,
-.filtro-bicchieri-container:hover > button::after {
-    width: 100%;
-}
-
-.lista-categorie, .lista-bicchieri {
-    list-style: none;
-    background: #fff;
-    border: none;
-    opacity: 0;
-    pointer-events: none; /* disabilita l'interazione con la lista quando è nascosta */
-    transition: opacity 0.3s ease-in-out;
-    width: 200px;
-    font-family: "Inter", sans-serif;
-    font-size: 15px;
-    position: absolute;
-    top: 46px; /*posizione sotto il bottone (44px altezza bottone, 2px in più per la linea del bordo)*/
-    left: 0;
-}
-.filtro-categoria-container:hover .lista-categorie,
-.filtro-bicchieri-container:hover .lista-bicchieri {
-    opacity: 1;
-    pointer-events: auto; /* abilita l'interazione con la lista quando è visibile */
-}
-.lista-categorie > li > button, .lista-bicchieri > li > button {
-    background: none;
-    border: none;
-    font-family: "Inter", sans-serif;
-    font-size: 15px;
-    width: 100%;
-    text-align: left;
-    padding: 8px 0; /*il padding è sia per top che per bottom, 0 significa che a destra e sinistra non c'è padding*/
+    color: #000;
+    min-height: 32px;
+    border: 1px solid #000;
+    border-radius: 50px;
+    width: 140px;
     cursor: pointer;
-    color: #777777; /* colore base testo degli elementi lista */
+}
+.filtri > button, .filtri > button {
+    transition: background-color 0.3s, color 0.3s;
+}
+.filtri > button:hover, .filtri > button:hover {
+    background-color: #e9e9e9;
+    color: #000000;
+}
+.filtri > button.active, .filtri > button.active { /* colore del testo quando il bottone è attivo */
+    background-color: #000;
+    color: #fff;
+}
+.bottone-reset {
+    font-family: 'Inter';
+    font-size: clamp(10px, 3.5vw, 13px);
+    font-weight: 500;
+    min-height: 32px;
+    min-width: 140px;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid transparent;
+    border-radius: 50px;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 1.5vw;
+    transition: border 0.3s;
+}
+.bottone-reset > svg {
+    width: 15px;
 }
 
-.lista-categorie > li:first-child, .lista-bicchieri > li:first-child {
-    margin-top: clamp(6px, 2vw, 12px);
+.bottone-reset:hover {
+    border: 1px solid #000;
 }
 
-.lista-bicchieri > li > button.active:hover, .lista-categorie > li > button.active:hover { /* colore del testo quando il mouse sta sopra e il bottone è attivo*/
-    color: #ff9848;
-}
-.lista-bicchieri > li > button.active, .lista-categorie > li > button.active { /* colore del testo quando il bottone è attivo */
-    color: #FC6E03;
-}
-/*FINE ARCHIVIO HEADER*/
-
-/*INIZIO ARCHIVIO MAIN*/
-.set { /*classe della libreria*/
-    transform: translateX(50px); /*aggiugno questo per allineare i cocktail, inizialmente ho aggiunto la stessa regola ma con il valore negativo per avvicinare i testi ai cocktails, spostando di -50 ho compensato con +50 qui*/
+.separatore {
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    margin: 3vw 0 1vw 0;
 }
 
 .altezza { max-height: 22vw; }
@@ -137,14 +87,14 @@
     font-size: clamp(16px, 1vw, 18px);
 }
 
-.allineamento-left {
+.allineamento {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
     transform: translateX(-50px);
 }
-.allineamento-left > .category {
+.allineamento > .category {
     padding: 4px 13px;
     width: max-content;
     border: 1px solid #000;
@@ -153,7 +103,41 @@
     font-size: 15px;
     font-weight: 400;
 }
-/*FINE ARCHIVIO MAIN*/
+
+
+.set, .cocktail-card, .cocktail-card img {
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
+.set {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    box-sizing: border-box;
+    margin: 5.5vw 0 5.5vw 0;
+}
+.cocktail-card {
+    background: #fff;
+    border: none;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 12px;
+    text-decoration: none;
+    pointer-events: all;
+    transition: opacity 0.3s, transform 0.3s;
+}
+.cocktail-card img {
+    width: 15vw;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+.nascosto {
+    display: none;
+}
 
 /* Tablet */
 @media (min-width: 768px) and (max-width: 1194px) {
@@ -165,24 +149,42 @@
         font-size: 13px; 
         text-align: center; 
     }
-    .allineamento-left {
+    .allineamento {
         align-items: center;
         transform: none;
         gap: 10px;
     }
-    .allineamento-left > .category { 
+    .allineamento > .category { 
         font-size: 11px; 
         padding: 3px 8px; 
     }
     .set {
         transform: none; /* rimuove lo spostamento a destra dei cocktail per i tablet */
+        justify-content: center;
+        align-items: flex-end;
+        gap: 10vw;
+        padding: 10px 0;
     }
+    .cocktail-card {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    .cocktail-card img { width: 16vw; }
+    .drink-name { font-size: 18px; text-align: center; }
+    .drink-type { font-size: 13px; text-align: center; }
+    .allineamento {
+        align-items: center;
+        transform: none;
+        gap: 10px;
+    }
+    .allineamento > .category { font-size: 11px; padding: 3px 8px; }
 }
 
 /* Telefono */
 @media (min-width: 370px) and (max-width: 768px) {
     .altezza { max-height: 55vw; }
-    .allineamento-left {
+    .allineamento {
         align-items: center;
         transform: none;
         gap: 12px;
@@ -195,17 +197,31 @@
         font-size: 14px; 
         text-align: center; 
     }
-    .allineamento-left > .category { font-size: 13px; }
+    .allineamento > .category { font-size: 13px; }
     .allineamento-centro { margin-top: 24px; }
     .set {
-        transform: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 20px 0;
+        gap: 40px;
     }
+    .cocktail-card {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        margin: 6vw 0 6vw 0;
+    }
+    .cocktail-card img { width: 50vw; }
+}
+    .separatore {
+        margin: 5vw 0 1vw 0;
 }
 
 /* Dispositivi più piccoli */
 @media (max-width: 370px) {
     .altezza { max-height: unset; }
-    .allineamento-left {
+    .allineamento {
         align-items: center;
         transform: none;
         gap: 10px;
@@ -218,12 +234,24 @@
         font-size: 12px; 
         text-align: center; 
     }
-    .allineamento-left > .category { 
+    .allineamento > .category { 
         font-size: 11px; 
         padding: 3px 10px; 
     }
     .allineamento-centro { margin-top: 16px; }
     .set {
         transform: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 16px 0;
+        gap: 32px;
     }
+    .cocktail-card {
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        margin: 6vw 0 6vw 0;
+    }
+    .cocktail-card img { width: 65vw; }
 }
