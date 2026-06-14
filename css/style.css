@@ -60,7 +60,7 @@ section {
     display: flex;
     justify-content: center;
     gap: 15vw;
-    margin-bottom: 120px;
+    margin-bottom: clamp(100px, 10vw, 120px);
 }
 
 .consiglio {
@@ -205,7 +205,7 @@ nav{
     gap: 20px;
     height: fit-content;
 }
-.section-1-img { width: clamp(280px, 22vw, 400px); }
+.section-1-img { width: clamp(378px, 22vw, 430px); }
 /*FINE SECTION 1*/
 
 
@@ -322,7 +322,6 @@ nav{
 
 /*INIZIO SECTION 3 DETTAGLIO*/
 .section-3-container{
-    height: 670px;
     background-size: cover;
     background-position: center;
     border-radius: 50px;
@@ -371,6 +370,7 @@ nav{
     border-radius: 50px 50px 0 0;
     background-color: #fff;
     padding: 45px 45px 0 45px;
+    margin-top: 15vw;
 }
 .section-3-content > ul {
     font-family: "Inter", sans-serif;
@@ -632,7 +632,6 @@ nav{
     margin:0px
 }
 .section-5-container{
-    height: 670px;
     background-size: cover;
     background-position: center;
     border-radius: 50px;
@@ -646,6 +645,7 @@ nav{
     border-radius: 50px 50px 0 0;
     background-color: #fff;
     padding: 45px 45px 0 45px;
+    margin-top: 15vw;
 }
 
 .section-5-content > ul {
@@ -780,7 +780,7 @@ nav{
     .section-2-img { zoom: 0.85; } /*dato che ci sono poche media query, questa serve per ridimensionare il drink con l'animazione ulteriormente*/
 }
 @media (min-width: 1294px) and (max-width: 1394px) {
-    .section-2-img { zoom: 0.70; } /*dato che ci sono poche media query, questa serve per ridimensionare il drink con l'animazione ulteriormente*/
+    .section-2-img { zoom: 0.85; } /*dato che ci sono poche media query, questa serve per ridimensionare il drink con l'animazione ulteriormente*/
 }
 
 /* Tablet */
@@ -835,10 +835,6 @@ nav{
         width: clamp(100px, 40vw, 500px);
         white-space: normal;
     }
-    .section-1 > img { 
-        width: clamp(250px, 35vw, 500px);
-        align-self: anchor-center;
-    }
 
      /*section 2*/
      .section-2 {
@@ -849,7 +845,7 @@ nav{
         width: clamp(100px, 36vw, 500px);
     }
     .section-2-desc > ol > li { white-space: normal; }
-    .section-2-img { zoom: 0.55; }
+    .section-2-img { zoom: 0.65; }
     .sposta { transform: translateX(-40px); } /*sposta il cocktail sulla sinistra perchè era troppo attaccato ai bordi della pagina*/
     
      /*section 3*/
@@ -859,7 +855,30 @@ nav{
     }
 
     .section-3-content > ul { font-size: clamp(14px, 2.4vw, 18px); }
-    .section-3-container { height: 500px; }
+}
+
+@media (min-width: 768px) and (max-width: 1020px) {
+    .section-1{
+        align-items: center;
+        flex-direction: column;
+        gap: 10vw;
+    }
+    .section-1-desc {
+        font-size: clamp(15px, 3vw, 18px);
+        width: 100%;
+        white-space: normal;
+    }
+    .section-1-img { width: clamp(270px, 60vw, 400px); }
+
+    .section-2 {
+        align-items: center;
+        flex-direction: column;
+    }
+    .section-2-desc > ol > li { white-space: pre; }
+    .section-2-img {
+        zoom: 0.7; /*rispetta il layout cioè riadatta tutti i componenti, invece "transform: scale(0.5) translateY(-466px);" no*/ 
+        margin: 0;
+    }
 }
 
 /* Telefono */
@@ -911,19 +930,23 @@ nav{
     .section-1{
         align-items: center;
         flex-direction: column;
-        gap: 20px;
+        gap: 10vw;
     }
     .section-1-desc {
         font-size: clamp(13px, 2.5vw, 17px);
-        width: clamp(100px, 70vw, 400px);
+        width: clamp(200px, 80vw, 600px);
         white-space: normal;
     }
-    .section-1 > img { width: clamp(270px, 60vw, 400px); }
+    .section-1-img { width: clamp(270px, 60vw, 400px); }
 
      /*section 2*/
      .section-2{
         align-items: center;
         flex-direction: column;
+    }
+
+    .section-2-content{
+        width: clamp(200px, 80vw, 600px);
     }
 
     .section-2-desc > ol, .consiglio { font-size: clamp(13px, 2.5vw, 17px); }
@@ -939,7 +962,6 @@ nav{
         align-items: center;
         flex-direction: column;
     }
-    .section-3-container { height: 370px; }
     .section-3-content { width: auto; }
     .section-3-content > ul { 
         font-size: clamp(13px, 2.5vw, 17px);
@@ -992,7 +1014,10 @@ nav{
         margin-bottom: 10px;
     }
     h3 { font-size: 14px; }
-    section { gap: 5vw; }
+    section { 
+        margin-bottom: clamp(80px, 10vw, 120px);
+        gap: 5vw; 
+    }
     .consiglio { white-space: normal; }
 
     /*navbar*/
@@ -1037,14 +1062,14 @@ nav{
     .section-1{
         align-items: center;
         flex-direction: column;
-        gap: 20px;
+        gap: 10vw;
     }
     .section-1-desc {
         font-size: clamp(13px, 2vw, 14px);
-        width: clamp(100px, 70vw, 400px);
+        width: clamp(200px, 80vw, 600px);
         white-space: normal;
     }
-    .section-1 > img { width: clamp(100px, 68vw, 300px); }
+    .section-1-img { width: clamp(100px, 68vw, 300px); }
 
      /*section 2*/
      .section-2{
@@ -1067,7 +1092,6 @@ nav{
         align-items: center;
         flex-direction: column;
     }
-    .section-3-container { height: 370px; }
     .section-3-content { width: auto; }
     .section-3-content > ul { 
         font-size: clamp(13px, 2vw, 14px);
@@ -1215,11 +1239,6 @@ nav{
     }
 
     /* section 5 */
-    .section-5-container {
-        height: 500px;
-        border-radius: 30px;
-    }
-
     .section-5-content {
         width: 60%;
         border-radius: 50px 50px 0 0;
@@ -1353,16 +1372,13 @@ nav{
 
     /* section 5 */
     .section-5-container {
-        height: 370px;
         border-radius: 50px;
         width: clamp(200px, 80vw, 600px);
     }
 
     .section-5-content {
-        width: 100%;
-        max-width: clamp(200px, 80vw, 600px);
-        border-radius: 50px 50px 0 0;
-        padding: 25px 25px 0px 25px;
+        width: auto;
+        padding: 25px 25px 0 25px;
     }
 
     .section-5-content > ul {
@@ -1496,15 +1512,8 @@ nav{
     }
 
     /* section 5 */
-    .section-5-container {
-        height: auto; 
-        min-height: 360px;
-        border-radius: 16px;
-    }
-
     .section-5-content {
-        width: 100%;
-        border-radius: 16px 16px 0 0;
+        width: auto;
         padding: 20px 18px 0 18px;
     }
 
